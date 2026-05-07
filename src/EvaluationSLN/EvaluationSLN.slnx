@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Agent Evaluators/" />
+  <Folder Name="/Automation/" />
+  <Folder Name="/Baseline/">
+    <Project Path="Eval.Agent/Eval.Agent.csproj" />
+    <Project Path="Eval.FoundryAgent/Eval.FoundryAgent.csproj" />
+  </Folder>
+  <Folder Name="/General Purpose/" />
+  <Folder Name="/Risk and safety/" />
+  <Folder Name="/Textual Similarities/" />
+</Solution>
