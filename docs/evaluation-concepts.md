@@ -11,6 +11,11 @@ AI evaluation is the process of systematically measuring the quality, safety, an
 - **Compare approaches** — Objectively compare different models, prompts, or agent configurations
 - **Build confidence** — Provide evidence that your AI application meets quality standards
 
+
+## PREPRODUCTION EVALUATION
+
+![Preproduction Evals](preproduction-evals.png)
+
 ## Evaluation Metrics
 
 ### Quality Metrics

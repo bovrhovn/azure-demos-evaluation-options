@@ -1,0 +1,10 @@
+﻿{"query": "What is machine learning?", "response": "Machine learning is a subset of AI.", "ground_truth": "Machine learning is a type of AI that learns from data."}
+{"query": "Explain neural networks.", "response": "Neural networks are computing systems inspired by biological neural networks.", "ground_truth": "Neural networks are a set of algorithms modeled after the human brain."}
+{"query": "Explain Evaluation.", "response": "Evaluation is the process of assessing the performance of a model.", "ground_truth": "Evaluation is the process of measuring how well a model performs on a given dataset."}
+{"query": "What is overfitting?", "response": "Overfitting occurs when a model learns the training data too well.", "ground_truth": "Overfitting happens when a model performs well on training data but poorly on unseen data."}
+{"query": "What is underfitting?", "response": "Underfitting occurs when a model is too simple to capture the underlying pattern in the data.", "ground_truth": "Underfitting happens when a model cannot capture the underlying trend of the data, resulting in poor performance."}
+{"query": "What is the 2nd largest city in USA?", "response": "Los Angeles is the 2nd largest city in the USA.", "ground_truth": "Los Angeles is the 2nd largest city in the USA."}
+{"query": "What is the capital of France?", "response": "The capital of France is Paris.", "ground_truth": "The capital of France is Paris."}
+{"query": "What is the tallest mountain in the world?", "response": "Mount Everest is the tallest mountain in the world.", "ground_truth": "Mount Everest is the tallest mountain in the world."}
+{"query": "What is the largest ocean on Earth?", "response": "The Pacific Ocean is the largest ocean on Earth.", "ground_truth": "The Pacific Ocean is the largest ocean on Earth."}
+{"query": "What is the smallest country in the world?", "response": "Vatican City is the smallest country in the world.", "ground_truth": "Vatican City is the smallest country in the world."}
