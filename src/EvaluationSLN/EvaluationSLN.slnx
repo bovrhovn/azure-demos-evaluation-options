@@ -4,9 +4,11 @@
   <Folder Name="/Baseline/">
     <Project Path="Eval.Agent/Eval.Agent.csproj" />
     <Project Path="Eval.FoundryAgent/Eval.FoundryAgent.csproj" />
+    <Project Path="Eval.Tests.Base/Eval.Tests.Base.csproj" />
   </Folder>
   <Folder Name="/General Purpose/">
     <Project Path="Eval.BuiltIn.Coherence/Eval.BuiltIn.Coherence.csproj" />
+    <Project Path="Eval.BuiltIn.Custom/Eval.BuiltIn.Custom.csproj" />
   </Folder>
   <Folder Name="/Risk and safety/" />
   <Folder Name="/Textual Similarities/" />
