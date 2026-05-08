@@ -2,6 +2,10 @@
 
 This folder contains utility scripts for setting up and managing the project.
 
+## .NET Requirement
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+
 | Script | Description |
 |---|---|
 | [`setup.sh`](setup.sh) | Verifies prerequisites and sets up the local development environment |

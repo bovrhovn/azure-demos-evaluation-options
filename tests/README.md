@@ -1,30 +1,41 @@
 # Tests
 
-This folder contains unit and integration tests for the evaluation demos in this repository.
+This folder contains test documentation for the evaluation demos in this repository.
 
 ## Structure
 
 ```
 tests/
-├── agent-framework/    # Tests for the Agent Framework evaluation demos
-└── foundry-sdk/        # Tests for the Microsoft Foundry SDK evaluation demos
+└── README.md
+
+src/EvaluationSLN/
+├── Eval.Agent.AIAssistedEvaluation/      # Agent framework AI-assisted evaluation tests
+├── Eval.BuiltIn.AgentEvaluation/         # Built-in agent evaluation tests
+├── Eval.BuiltIn.BleuScoreTests/          # BLEU score evaluator tests
+├── Eval.BuiltIn.Coherence/               # Coherence evaluator tests
+├── Eval.BuiltIn.EvaluatorsCatalog/       # Evaluator catalog tests
+└── Eval.BuiltIn.ViolenceDetection/       # Violence detection evaluator tests
 ```
 
 ## Test Framework
 
-Tests use [xUnit](https://xunit.net/) as the test framework, consistent with the broader .NET ecosystem and the [official AI evaluation samples](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api).
+Tests use [NUnit](https://nunit.org/) with `Microsoft.NET.Test.Sdk` and `NUnit3TestAdapter`.
+
+## .NET Requirement
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 
 ## Running Tests
 
 ```bash
 # Run all tests
-dotnet test tests/
+dotnet test src/EvaluationSLN/EvaluationSLN.slnx
 
 # Run tests for a specific project
-dotnet test tests/agent-framework/
+dotnet test src/EvaluationSLN/Eval.BuiltIn.Coherence/Eval.BuiltIn.Coherence.csproj
 
 # Run tests with detailed output
-dotnet test tests/ --logger "console;verbosity=detailed"
+dotnet test src/EvaluationSLN/EvaluationSLN.slnx --logger "console;verbosity=detailed"
 ```
 
 ## Writing Tests
@@ -63,5 +74,5 @@ public class EvaluationTests
 
 ## References
 
-- [xUnit documentation](https://xunit.net/docs/getting-started/netcore/cmdline)
+- [NUnit documentation](https://docs.nunit.org/)
 - [AI Evaluation API samples](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api)
