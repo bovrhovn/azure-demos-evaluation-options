@@ -3,7 +3,6 @@
     <Project Path="Eval.Agent.AIAssistedEvaluation/Eval.Agent.AIAssistedEvaluation.csproj" />
     <Project Path="Eval.BuiltIn.AgentEvaluation/Eval.BuiltIn.AgentEvaluation.csproj" />
   </Folder>
-  <Folder Name="/Automation/" />
   <Folder Name="/Baseline/">
     <Project Path="Eval.Agent/Eval.Agent.csproj" />
     <Project Path="Eval.FoundryAgent/Eval.FoundryAgent.csproj" />
@@ -16,5 +15,7 @@
   <Folder Name="/Risk and safety/">
     <Project Path="Eval.BuiltIn.ViolenceDetection/Eval.BuiltIn.ViolenceDetection.csproj" />
   </Folder>
-  <Folder Name="/Textual Similarities/" />
+  <Folder Name="/Textual Similarities/">
+    <Project Path="Eval.BuiltIn.BleuScoreTests/Eval.BuiltIn.BleuScoreTests.csproj" />
+  </Folder>
 </Solution>
