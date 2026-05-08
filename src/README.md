@@ -4,8 +4,25 @@ This folder contains all demo source code for the AI evaluation options project.
 
 | Folder | Description |
 |---|---|
-| [`agent-framework/`](agent-framework/README.md) | Evaluation demos using Microsoft Agent Framework |
-| [`foundry-sdk/`](foundry-sdk/README.md) | Evaluation demos using Microsoft Foundry SDK |
+| [`EvaluationSLN/`](EvaluationSLN/) | .NET 10 solution containing all evaluation demos and shared test base |
+
+## .NET Requirement
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+
+## Solution Projects
+
+`src/EvaluationSLN/` currently contains:
+
+- `Eval.Agent`
+- `Eval.FoundryAgent`
+- `Eval.Agent.AIAssistedEvaluation`
+- `Eval.BuiltIn.AgentEvaluation`
+- `Eval.BuiltIn.BleuScoreTests`
+- `Eval.BuiltIn.Coherence`
+- `Eval.BuiltIn.EvaluatorsCatalog`
+- `Eval.BuiltIn.ViolenceDetection`
+- `Eval.Tests.Base`
 
 ## Getting Started
 
