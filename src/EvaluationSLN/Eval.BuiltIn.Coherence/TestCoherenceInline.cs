@@ -27,8 +27,6 @@ public class TestsCoherenceInline
         Console.WriteLine("Creating Evaluation");
         var modelDeploymentName = Environment.GetEnvironmentVariable("DEPLOYMENT_NAME") ?? 
                                   "general-gpt-4.1";
-        ArgumentException.ThrowIfNullOrEmpty(modelDeploymentName,
-            "Please set the DEPLOYMENT_NAME environment variable to your model deployment name.");
         using var evaluationDataContent = BinaryContent.Create(EvalTestExtensions.GetDataConfig(modelDeploymentName));
         var evaluation = await evaluationClient.CreateEvaluationAsync(evaluationDataContent);
         var fields = EvalTestExtensions.ParseClientResult(evaluation, ["name", "id"]);
