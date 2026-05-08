@@ -9,6 +9,7 @@
   <Folder Name="/General Purpose/">
     <Project Path="Eval.BuiltIn.Coherence/Eval.BuiltIn.Coherence.csproj" />
     <Project Path="Eval.BuiltIn.Custom/Eval.BuiltIn.Custom.csproj" />
+    <Project Path="Eval.BuiltIn.EvaluatorsCatalog/Eval.BuiltIn.EvaluatorsCatalog.csproj" />
   </Folder>
   <Folder Name="/Risk and safety/" />
   <Folder Name="/Textual Similarities/" />
