@@ -2,7 +2,7 @@
 
 ## Overview
 
-The [Semantic Kernel Agent Framework](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/) (part of the Microsoft Agent Framework) enables building AI agents that use tools, maintain state, and collaborate in multi-agent scenarios. This guide explains how to evaluate those agents using `Microsoft.Extensions.AI.Evaluation`.
+The Microsoft Agent Framework enables building AI agents that can use tools, maintain state, and participate in orchestrated workflows. This guide explains how to evaluate those agents using `Microsoft.Extensions.AI.Evaluation` with Microsoft Foundry SDK connectivity.
 
 ## Required NuGet Packages
 
@@ -10,8 +10,9 @@ The [Semantic Kernel Agent Framework](https://learn.microsoft.com/en-us/semantic
 <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="*" />
 <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="*" />
 <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting" Version="*" />
-<PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="*" />
-<PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureOpenAI" Version="*" />
+<PackageReference Include="Microsoft.Agents.AI.Foundry" Version="*" />
+<PackageReference Include="Azure.AI.Projects" Version="*" />
+<PackageReference Include="Azure.Identity" Version="*" />
 ```
 
 ## Setting Up Evaluation
@@ -19,18 +20,26 @@ The [Semantic Kernel Agent Framework](https://learn.microsoft.com/en-us/semantic
 Use `ChatConfiguration` to configure how evaluation results are cached and reported:
 
 ```csharp
+using Azure.AI.Projects;
+using Azure.Identity;
+using Microsoft.Agents.AI;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 
-// Storage path for evaluation results (e.g., disk-based cache)
+string endpoint = Environment.GetEnvironmentVariable("ENDPOINT")!;
+string deploymentName = Environment.GetEnvironmentVariable("DEPLOYMENT_NAME")!;
+
+AIAgent agent = new AIProjectClient(new Uri(endpoint), new DefaultAzureCredential())
+    .AsAIAgent(
+        model: deploymentName,
+        instructions: "You are a helpful assistant.",
+        name: "EvaluationAgent");
+
 string storagePath = Path.Combine(Path.GetTempPath(), "evaluation-results");
 
 ChatConfiguration chatConfig = new(
-    endpoint: new AzureOpenAIChatConfiguration(
-        deploymentName: "gpt-4o",
-        endpoint: new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!),
-        apiKey: Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!
-    ),
+    chatClient: agent.AsIChatClient(),
     resultStorage: new DiskBasedResponseCache(storagePath)
 );
 ```
@@ -47,9 +56,11 @@ IEvaluator[] evaluators =
     new CoherenceEvaluator(),
 ];
 
-// Run evaluation
+// Run the agent and evaluate its response
+string agentResponse = (await agent.RunAsync("Tell me about .NET 9.")).Text;
+
 EvaluationResult result = await evaluators.EvaluateAsync(
-    messages: conversationHistory,
+    messages: [new ChatMessage(ChatRole.User, "Tell me about .NET 9.")],
     modelResponse: agentResponse,
     chatConfig: chatConfig
 );
@@ -61,38 +72,32 @@ foreach (EvaluationMetric metric in result.Metrics.Values)
 }
 ```
 
-## Integrating with Semantic Kernel Agents
+## Integrating with Microsoft Agent Framework
 
 ```csharp
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Agents;
+using Azure.AI.Projects;
+using Azure.Identity;
+using Microsoft.Agents.AI;
 
-Kernel kernel = Kernel.CreateBuilder()
-    .AddAzureOpenAIChatCompletion(deploymentName, endpoint, apiKey)
-    .Build();
+AIProjectClient projectClient = new(new Uri(endpoint), new DefaultAzureCredential());
 
-ChatCompletionAgent agent = new()
-{
-    Name = "EvaluationAgent",
-    Instructions = "You are a helpful assistant.",
-    Kernel = kernel,
-};
+AIAgent agent = projectClient.AsAIAgent(
+    model: deploymentName,
+    instructions: "You are a helpful assistant.",
+    name: "EvaluationAgent");
 
 // Collect responses and evaluate
-AgentThread thread = new();
-await foreach (ChatMessageContent message in agent.InvokeAsync("Tell me about .NET 9.", thread))
-{
-    // Evaluate each response
-    EvaluationResult result = await evaluators.EvaluateAsync(
-        messages: thread.History,
-        modelResponse: message.Content!,
-        chatConfig: chatConfig
-    );
-}
+string response = (await agent.RunAsync("Tell me about .NET 9.")).Text;
+EvaluationResult result = await evaluators.EvaluateAsync(
+    messages: [new ChatMessage(ChatRole.User, "Tell me about .NET 9.")],
+    modelResponse: response,
+    chatConfig: chatConfig
+);
 ```
 
 ## References
 
-- [Semantic Kernel Agent Framework docs](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/)
+- [Azure AI Foundry Agents documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/)
+- [Microsoft Foundry SDK for .NET](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
 - [Microsoft.Extensions.AI.Evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries)
 - [Official samples — AI Evaluation API](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api)
