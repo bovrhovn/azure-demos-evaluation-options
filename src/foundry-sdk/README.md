@@ -1,6 +1,6 @@
-# Azure AI Foundry SDK Evaluation Demos
+# Microsoft Foundry SDK Evaluation Demos
 
-This folder contains demos that evaluate AI models and prompts using the [Azure AI Foundry SDK](https://learn.microsoft.com/en-us/azure/ai-foundry/) with the `Microsoft.Extensions.AI.Evaluation` libraries.
+This folder contains demos that evaluate AI models and prompts using the Microsoft Foundry SDK (`Azure.AI.Projects`) with the `Microsoft.Extensions.AI.Evaluation` libraries.
 
 ## What is Azure AI Foundry?
 
@@ -35,6 +35,6 @@ Azure AI Foundry evaluation demos in this folder:
 ## References
 
 - [Azure AI Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/)
-- [Azure AI Foundry SDK for .NET](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
+- [Microsoft Foundry SDK for .NET](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
 - [Microsoft.Extensions.AI.Evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries)
 - [AI Evaluation API samples](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api)

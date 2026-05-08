@@ -1,10 +1,10 @@
 # Agent Framework Evaluation Demos
 
-This folder contains demos that evaluate AI agents built with [Semantic Kernel Agents](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/) (Microsoft Agent Framework) using the `Microsoft.Extensions.AI.Evaluation` libraries.
+This folder contains demos that evaluate AI agents built with the Microsoft Agent Framework using the `Microsoft.Extensions.AI.Evaluation` libraries.
 
 ## What is the Microsoft Agent Framework?
 
-The Microsoft Agent Framework (part of [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/)) provides abstractions for building AI agents that can:
+The Microsoft Agent Framework provides abstractions for building AI agents that can:
 
 - Use tools and plugins
 - Maintain conversation history
@@ -33,6 +33,6 @@ Agents are evaluated by:
 
 ## References
 
-- [Semantic Kernel Agent Framework docs](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/)
+- [Azure AI Foundry Agents documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/)
 - [Microsoft.Extensions.AI.Evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries)
 - [AI Evaluation API samples](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api)

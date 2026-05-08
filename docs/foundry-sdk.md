@@ -1,8 +1,8 @@
-# Evaluation with Azure AI Foundry SDK
+# Evaluation with Microsoft Foundry SDK
 
 ## Overview
 
-[Azure AI Foundry](https://ai.azure.com) is Microsoft's unified AI platform for building, evaluating, and deploying AI applications. This guide explains how to evaluate AI models deployed via Azure AI Foundry using `Microsoft.Extensions.AI.Evaluation`.
+[Azure AI Foundry](https://ai.azure.com) is Microsoft's unified AI platform for building, evaluating, and deploying AI applications. In this solution, Foundry integration uses the Microsoft Foundry SDK (`Azure.AI.Projects`). This guide explains how to evaluate AI models using `Microsoft.Extensions.AI.Evaluation`.
 
 ## Required NuGet Packages
 
@@ -15,7 +15,7 @@
 <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="*" />
 ```
 
-## Setting Up the Azure AI Foundry Client
+## Setting Up the Microsoft Foundry SDK Client
 
 ```csharp
 using Azure.AI.Projects;
@@ -29,7 +29,7 @@ ChatCompletionsClient chatClient = projectClient.GetChatCompletionsClient();
 
 ## Setting Up Evaluation
 
-Use `ChatConfiguration` to wire the Azure AI Foundry client into the evaluation pipeline:
+Use `ChatConfiguration` to wire the Microsoft Foundry SDK client into the evaluation pipeline:
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -96,6 +96,6 @@ await report.SaveAsHtmlAsync("evaluation-report.html");
 ## References
 
 - [Azure AI Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/)
-- [Azure AI Foundry SDK for .NET](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
+- [Microsoft Foundry SDK for .NET](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview)
 - [Microsoft.Extensions.AI.Evaluation libraries](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries)
 - [Official samples — AI Evaluation API](https://github.com/dotnet/ai-samples/tree/main/src/microsoft-extensions-ai-evaluation/api)

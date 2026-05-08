@@ -4,8 +4,8 @@ This folder contains all demo source code for the AI evaluation options project.
 
 | Folder | Description |
 |---|---|
-| [`agent-framework/`](agent-framework/README.md) | Evaluation demos using Microsoft Agent Framework (Semantic Kernel Agents) |
-| [`foundry-sdk/`](foundry-sdk/README.md) | Evaluation demos using Azure AI Foundry SDK |
+| [`agent-framework/`](agent-framework/README.md) | Evaluation demos using Microsoft Agent Framework |
+| [`foundry-sdk/`](foundry-sdk/README.md) | Evaluation demos using Microsoft Foundry SDK |
 
 ## Getting Started
 

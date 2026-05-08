@@ -7,7 +7,7 @@ This folder contains unit and integration tests for the evaluation demos in this
 ```
 tests/
 ├── agent-framework/    # Tests for the Agent Framework evaluation demos
-└── foundry-sdk/        # Tests for the Azure AI Foundry SDK evaluation demos
+└── foundry-sdk/        # Tests for the Microsoft Foundry SDK evaluation demos
 ```
 
 ## Test Framework

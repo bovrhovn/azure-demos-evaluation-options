@@ -1,6 +1,6 @@
 # Azure AI Evaluation Options
 
-> Demonstrations of AI evaluation tools using the official .NET SDK — covering both **Microsoft Agent Framework (Semantic Kernel Agents)** and **Azure AI Foundry SDK** approaches.
+> Demonstrations of AI evaluation tools using the official .NET SDK — covering both **Microsoft Agent Framework** and **Microsoft Foundry SDK** approaches.
 
 [![.NET](https://img.shields.io/badge/.NET-9.0-512BD4)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -15,8 +15,8 @@ Two complementary approaches are demonstrated:
 
 | Approach | Description |
 |---|---|
-| **Microsoft Agent Framework** | Evaluate AI agents built with [Semantic Kernel Agents](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/), including multi-agent orchestration scenarios |
-| **Azure AI Foundry SDK** | Evaluate models and prompts using [Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) and its evaluation capabilities |
+| **Microsoft Agent Framework** | Evaluate AI agents built with the Microsoft Agent Framework, including orchestration and reusable agent patterns |
+| **Microsoft Foundry SDK** | Evaluate models and prompts using [Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) through the `Azure.AI.Projects` SDK |
 
 Both approaches build on the same `Microsoft.Extensions.AI.Evaluation` NuGet packages, enabling a consistent evaluation workflow regardless of which AI stack you use.
 
@@ -27,8 +27,8 @@ Both approaches build on the same `Microsoft.Extensions.AI.Evaluation` NuGet pac
 ```
 azure-demos-evaluation-options/
 ├── src/                    # Source code for all demos
-│   ├── agent-framework/    # Evaluation demos using Microsoft Agent Framework (Semantic Kernel Agents)
-│   └── foundry-sdk/        # Evaluation demos using Azure AI Foundry SDK
+│   ├── agent-framework/    # Evaluation demos using Microsoft Agent Framework
+│   └── foundry-sdk/        # Evaluation demos using Microsoft Foundry SDK
 ├── docs/                   # Documentation and guides
 ├── scripts/                # Setup and utility scripts
 └── tests/                  # Unit and integration tests
@@ -69,7 +69,7 @@ azure-demos-evaluation-options/
 
 4. **Explore the demos**
    - [`src/agent-framework/`](src/agent-framework/README.md) — Evaluation with Microsoft Agent Framework
-   - [`src/foundry-sdk/`](src/foundry-sdk/README.md) — Evaluation with Azure AI Foundry SDK
+   - [`src/foundry-sdk/`](src/foundry-sdk/README.md) — Evaluation with Microsoft Foundry SDK
 
 ---
 
@@ -104,7 +104,7 @@ The [`Microsoft.Extensions.AI.Evaluation`](https://learn.microsoft.com/en-us/dot
 
 - 📖 [AI Evaluation Libraries (.NET)](https://learn.microsoft.com/en-us/dotnet/ai/evaluation/libraries)
 - 📖 [Microsoft.Extensions.AI overview](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai)
-- 📖 [Semantic Kernel Agent Framework](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/)
+- 📖 [Azure AI Foundry Agents documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/)
 - 📖 [Azure AI Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/)
 
 ### Official Samples
@@ -119,7 +119,7 @@ The [`Microsoft.Extensions.AI.Evaluation`](https://learn.microsoft.com/en-us/dot
 |---|---|
 | [docs/overview.md](docs/overview.md) | Detailed project overview and architecture |
 | [docs/agent-framework.md](docs/agent-framework.md) | Guide for the Agent Framework evaluation demos |
-| [docs/foundry-sdk.md](docs/foundry-sdk.md) | Guide for the Azure AI Foundry SDK evaluation demos |
+| [docs/foundry-sdk.md](docs/foundry-sdk.md) | Guide for the Microsoft Foundry SDK evaluation demos |
 | [docs/evaluation-concepts.md](docs/evaluation-concepts.md) | Explanation of AI evaluation concepts used in this repo |
 
 ---
