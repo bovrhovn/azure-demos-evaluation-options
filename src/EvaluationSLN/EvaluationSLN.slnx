@@ -11,6 +11,8 @@
     <Project Path="Eval.BuiltIn.Custom/Eval.BuiltIn.Custom.csproj" />
     <Project Path="Eval.BuiltIn.EvaluatorsCatalog/Eval.BuiltIn.EvaluatorsCatalog.csproj" />
   </Folder>
-  <Folder Name="/Risk and safety/" />
+  <Folder Name="/Risk and safety/">
+    <Project Path="Eval.BuiltIn.ViolenceDetection/Eval.BuiltIn.ViolenceDetection.csproj" />
+  </Folder>
   <Folder Name="/Textual Similarities/" />
 </Solution>
