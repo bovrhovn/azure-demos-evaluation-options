@@ -24,23 +24,13 @@ All approaches build on the same `Microsoft.Extensions.AI.Evaluation` NuGet pack
 
 ## Project Structure
 
-```
-azure-demos-evaluation-options/
-├── src/
-│   └── EvaluationSLN/                   # .NET 10 solution and demo projects
-│       ├── Eval.Agent/                  # Agent Framework scenario
-│       ├── Eval.FoundryAgent/           # Foundry agent scenario
-│       ├── Eval.Agent.AIAssistedEvaluation/  # AI-assisted agent evaluation tests
-│       ├── Eval.BuiltIn.AgentEvaluation/
-│       ├── Eval.BuiltIn.BleuScoreTests/
-│       ├── Eval.BuiltIn.Coherence/
-│       ├── Eval.BuiltIn.EvaluatorsCatalog/
-│       ├── Eval.BuiltIn.ViolenceDetection/
-│       └── Eval.Tests.Base/
-├── docs/                                # Documentation and guides
-├── scripts/                             # Setup and utility scripts
-└── tests/                               # Test documentation
-```
+The solution contains **9 .NET projects** organized by scenario:
+
+- **Agent Scenarios**: `Eval.Agent`, `Eval.FoundryAgent`, `Eval.Agent.AIAssistedEvaluation`
+- **Built-in Evaluators**: Coherence, Violence Detection, BLEU Score, Agent Evaluation, Evaluators Catalog
+- **Support**: `Eval.Tests.Base` (shared test infrastructure)
+
+**See [docs/architecture.md](docs/architecture.md) for visual diagrams** showing project dependencies, data flows, and folder structure.
 
 ---
 
