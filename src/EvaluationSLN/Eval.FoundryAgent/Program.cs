@@ -31,6 +31,7 @@ var agentMessage = await agent.RunAsync(question);
 AnsiConsole.MarkupLine("[green]Answer:[/]");
 AnsiConsole.WriteLine(agentMessage.Text);
 AnsiConsole.WriteLine("----------------------------------------------");
+
 var continueWith = AnsiConsole.Ask("Continue with Local evaluator?",
     true);
 if (continueWith)
@@ -58,6 +59,24 @@ if (continueWith)
     //check with Azure Foundry evaluator 
     var coherenceEvaluator = new CoherenceEvaluator();
     var result = await coherenceEvaluator.EvaluateAsync(question, agentMessage.Text);
+    foreach (var keyValuePair in result.Metrics)
+    {
+        AnsiConsole.WriteLine($"Metric: {keyValuePair.Key}");
+        AnsiConsole.WriteLine($"Value: {keyValuePair.Value}");
+    }
+}
+
+continueWith = AnsiConsole.Ask("Continue with multiple evaluators?",
+    true);
+if (continueWith)
+{
+    //check with composite evaluator - multiple evals
+    var evaluator = new CompositeEvaluator(
+        new RelevanceEvaluator(),
+        new FluencyEvaluator()
+    );
+
+    var result = await evaluator.EvaluateAsync(question, agentMessage.Text);
     foreach (var keyValuePair in result.Metrics)
     {
         AnsiConsole.WriteLine($"Metric: {keyValuePair.Key}");
