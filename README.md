@@ -125,7 +125,8 @@ The [`Microsoft.Extensions.AI.Evaluation`](https://learn.microsoft.com/en-us/dot
 
 | Document | Description |
 |---|---|
-| [docs/overview.md](docs/overview.md) | Detailed project overview and architecture |
+| [docs/architecture.md](docs/architecture.md) | **START HERE** — Visual architecture with mermaid diagrams, project dependencies, and data flows |
+| [docs/overview.md](docs/overview.md) | High-level project purpose and evaluation flow |
 | [docs/agent-framework.md](docs/agent-framework.md) | Guide for the Agent Framework evaluation demos |
 | [docs/foundry-sdk.md](docs/foundry-sdk.md) | Guide for the Microsoft Foundry SDK evaluation demos |
 | [docs/evaluation-concepts.md](docs/evaluation-concepts.md) | Explanation of AI evaluation concepts used in this repo |
