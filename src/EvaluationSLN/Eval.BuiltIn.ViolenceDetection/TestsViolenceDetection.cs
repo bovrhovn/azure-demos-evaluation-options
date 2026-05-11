@@ -148,7 +148,7 @@ public class TestsViolenceDetection
         }
 
         Console.WriteLine($"------------------------------------------------------------");
-        await evaluationClient.DeleteEvaluationAsync(evaluationId, new System.ClientModel.Primitives.RequestOptions());
-        Assert.Pass("Violence detection evaluation created successfully with the provided configuration.");
+        // await evaluationClient.DeleteEvaluationAsync(evaluationId, new System.ClientModel.Primitives.RequestOptions());
+        // Assert.Pass("Violence detection evaluation created successfully with the provided configuration.");
     }
 }
