@@ -1,6 +1,6 @@
 # Azure AI Evaluation Options
 
-> Demonstrations of AI evaluation tools using the official .NET SDK — covering Microsoft Agent Framework, Microsoft Foundry SDK, and built-in evaluator scenarios.
+> Demonstrations of AI evaluation tools using the official .NET SDK — covering Microsoft Foundry SDK and built-in evaluator scenarios.
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4)](https://dotnet.microsoft.com/download/dotnet/10.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -15,11 +15,10 @@ Three complementary approaches are demonstrated:
 
 | Approach | Description |
 |---|---|
-| **Microsoft Agent Framework** | Evaluate AI agents built with the Microsoft Agent Framework, including orchestration and reusable agent patterns |
 | **Microsoft Foundry SDK** | Evaluate models and prompts using [Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) through the `Azure.AI.Projects` SDK |
 | **Built-in Evaluators** | Run built-in quality and safety evaluator scenarios such as coherence, violence detection, BLEU score, and evaluator catalog exploration |
 
-Both approaches build on the same `Microsoft.Extensions.AI.Evaluation` NuGet packages, enabling a consistent evaluation workflow regardless of which AI stack you use.
+All approaches build on the same `Microsoft.Extensions.AI.Evaluation` NuGet packages, enabling a consistent evaluation workflow regardless of which AI stack you use.
 
 ---
 
