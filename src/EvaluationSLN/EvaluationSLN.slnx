@@ -4,7 +4,6 @@
     <Project Path="Eval.BuiltIn.AgentEvaluation/Eval.BuiltIn.AgentEvaluation.csproj" />
   </Folder>
   <Folder Name="/Baseline/">
-    <Project Path="Eval.Agent/Eval.Agent.csproj" />
     <Project Path="Eval.FoundryAgent/Eval.FoundryAgent.csproj" />
     <Project Path="Eval.Tests.Base/Eval.Tests.Base.csproj" />
   </Folder>
