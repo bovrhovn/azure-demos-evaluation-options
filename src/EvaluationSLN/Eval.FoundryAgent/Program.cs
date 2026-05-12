@@ -32,8 +32,7 @@ ProjectsAgentRecord defaultAgent = await aiProjectClient.AgentAdministrationClie
     .GetAgentAsync(agentName);
 var agent = aiProjectClient.AsAIAgent(defaultAgent);
 AnsiConsole.MarkupLine(
-    $"[green]Successfully retrieved agent with name {agentName} and id {agent.Id}[/]. " +
-    $"Asking question now.");
+    $"[green]Successfully retrieved agent with name {agentName} on {azureFoundryEndpoint}[/].");
 var question = AnsiConsole.Ask<string>("Ask your question",
     "What is the 2nd largest city in Poland by population size?");
 AnsiConsole.MarkupLine("[green]Question:[/]" + question);
@@ -53,9 +52,12 @@ if (continueWith)
             //do check manually
             var response = item.Response;
             AnsiConsole.WriteLine($"Evaluating response: {response}");
-            return new EvalCheckResult(response.Contains("Krakow"),
+            var evalCheckResult = new EvalCheckResult(response.Contains("Krakow"),
                 "Checking coherence eval Krakow",
                 "Local coherence check");
+            AnsiConsole.MarkupLine(
+                $"[grey]Result of eval: {evalCheckResult.Passed} with reason {evalCheckResult.Reason}[/]");
+            return evalCheckResult;
         })
     );
     //get the eval from the run
@@ -66,12 +68,12 @@ continueWith = AnsiConsole.Ask("Continue with Azure Coherence evaluator?",
     true);
 var client =
     new ChatClientBuilder(
-        new AzureOpenAIClient(new Uri(azureOpenAIEndpoint), new DefaultAzureCredential())
-            .GetChatClient(deploymentName)
-            .AsIChatClient())
+            new AzureOpenAIClient(new Uri(azureOpenAIEndpoint), new DefaultAzureCredential())
+                .GetChatClient(deploymentName)
+                .AsIChatClient())
         .Build();
 var chatConfiguration = new ChatConfiguration(client);
-AnsiConsole.MarkupLine($"[grey]Chat client with Azure OpenAI model {deploymentName} created[/]");
+AnsiConsole.MarkupLine($"[grey]Chat client with Azure OpenAI model {deploymentName} on {azureOpenAIEndpoint}[/]");
 if (continueWith)
 {
     //check with Azure Foundry evaluator 
@@ -80,8 +82,7 @@ if (continueWith)
         chatConfiguration);
     foreach (var keyValuePair in result.Metrics)
     {
-        AnsiConsole.WriteLine($"Metric: {keyValuePair.Key}");
-        AnsiConsole.WriteLine($"Value: {keyValuePair.Value}");
+        OutputMetric(keyValuePair);
     }
 }
 
@@ -95,11 +96,42 @@ if (continueWith)
         new FluencyEvaluator()
     );
 
-    var result = await evaluator.EvaluateAsync(question, agentMessage.Text, 
+    var result = await evaluator.EvaluateAsync(question, agentMessage.Text,
         chatConfiguration);
     foreach (var keyValuePair in result.Metrics)
     {
-        AnsiConsole.WriteLine($"Metric: {keyValuePair.Key}");
-        AnsiConsole.WriteLine($"Value: {keyValuePair.Value}");
+        OutputMetric(keyValuePair);
     }
+}
+
+void OutputMetric(KeyValuePair<string, EvaluationMetric> keyValuePair)
+{
+    var (key, value) = keyValuePair;
+    if (value.Interpretation == null)
+    {
+        AnsiConsole.WriteLine($"[red]{key} has not provided any interpretation results.[/]");
+        return;
+    }
+
+    var metadata = string.Empty;
+    if (value.Metadata != null)
+        foreach (var valuePair in value.Metadata)
+        {
+            metadata += $"{valuePair.Key}: {valuePair.Value}{Environment.NewLine}";
+        }
+
+    var table = new Table()
+        .AddColumn("Metric")
+        .AddColumn("Rating")
+        .AddColumn("Result")
+        .AddColumn("Reason")
+        .AddColumn("Metadata")
+        .AddRow(key,
+            value.Interpretation.Rating.ToString(),
+            value.Interpretation.Failed ? "Failed" : "Success",
+            value.Interpretation.Reason ?? "No reason provided",
+            metadata)
+        .Border(TableBorder.Rounded)
+        .BorderColor(Color.Grey);
+    AnsiConsole.Write(table);
 }
