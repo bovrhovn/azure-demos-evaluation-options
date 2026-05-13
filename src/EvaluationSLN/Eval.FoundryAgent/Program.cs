@@ -52,8 +52,8 @@ if (continueWith)
             //do check manually
             var response = item.Response;
             AnsiConsole.WriteLine($"Evaluating response: {response}");
-            var evalCheckResult = new EvalCheckResult(response.Contains("Krakow"),
-                "Checking coherence eval Krakow",
+            var evalCheckResult = new EvalCheckResult(response.Contains("Kraków"),
+                "Checking coherence eval: Kraków",
                 "Local coherence check");
             AnsiConsole.MarkupLine(
                 $"[grey]Result of eval: {evalCheckResult.Passed} with reason {evalCheckResult.Reason}[/]");
